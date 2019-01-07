@@ -58,11 +58,17 @@ body {
 /* Main */
 
 main {
-    padding: 30px;
+    padding: 30px 300px 10px 300px;
 }
 
 .card .view {
-    height: 400px;
+    height: 300px;
+}
+
+.card .view.overlay {
+    height: 100%; 
+    width: auto; 
+    max-height: 300px;
 }
 
 .card .view img {
@@ -96,6 +102,24 @@ footer {
     color: white;
 }
 
+@media screen and (max-width: 1500px) {
+    main {
+        padding: 30px 200px 10px 200px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    main {
+        padding: 30px 100px 10px 100px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    main {
+        padding: 30px 30px 10px 30px;
+    }
+}
+
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
     .mega-dropdown {
@@ -110,12 +134,9 @@ footer {
     .user-dropdown {
         width: 220px;
     }
-    main {
-        padding: 20px;
-    }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
     .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link {
         margin: 0px;
         padding: 8px;

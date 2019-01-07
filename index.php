@@ -39,29 +39,70 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
           <a class="navbar-brand mr-5" href="#">Проекты МосПолитеха</a>
           <ul class="navbar-nav mt-lg-0">
-              <li class="nav-item dropdown mr-4 mega-dropdown active">
-                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">Проекты
-                  </a>
-                  <div class="dropdown-menu mega-menu v-2 z-depth-1 elegant-color px-3" aria-labelledby="navbarDropdownMenuLink2">
+            <?php
+              if(!isset($_GET['cat'])) {
+                $_GET['cat'] = 'projects';
+              }
+              if($_GET['cat'] === 'projects' && !isset($_GET['subcat'])) {
+                $_GET['subcat'] = 'all';
+              }
+              echo '<li class="nav-item dropdown mr-4 mega-dropdown';
+              if($_GET['cat'] === 'projects')
+                echo ' active';
+              echo '">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Проекты
+              </a>
+              <div class="dropdown-menu mega-menu v-2 z-depth-1 elegant-color px-3" aria-labelledby="navbarDropdownMenuLink2">
                     <div class="row">
-                      <a class="nav-link mx-3 selected" href="#">Все</a>
-                      <a class="nav-link mx-3" href="#">Транспорт</a>
-                      <a class="nav-link mx-3" href="#">Технология</a>
-                      <a class="nav-link mx-3" href="#">Химбиотех</a>
-                      <a class="nav-link mx-3" href="#">Энергетика</a>
-                      <a class="nav-link mx-3" href="#">Дизайн</a>
-                      <a class="nav-link mx-3" href="#">Социальные Технологии</a>
-                      <a class="nav-link mx-3" href="#">Инициативные проекты</a>
-                    </div>
+                      <a class="nav-link mx-3';
+              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'all')
+                echo ' selected';
+              echo '" href="/?cat=projects&subcat=all">Все</a>
+              <a class="nav-link mx-3';
+              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'transport')
+                echo ' selected';
+              echo '" href="/?cat=projects&subcat=transport">Транспорт</a>
+              <a class="nav-link mx-3';
+              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'tech')
+                echo ' selected';
+              echo '" href="/?cat=projects&subcat=tech">Технология</a>
+              <a class="nav-link mx-3';
+              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'him')
+                echo ' selected';
+              echo '" href="/?cat=projects&subcat=him">Химбиотех</a>
+              <a class="nav-link mx-3';
+              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'energ')
+                echo ' selected';
+              echo '" href="/?cat=projects&subcat=energ">Энергетика</a>
+              <a class="nav-link mx-3';
+              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'design')
+                echo ' selected';
+              echo '" href="/?cat=projects&subcat=design">Дизайн</a>
+              <a class="nav-link mx-3';
+              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'social')
+                echo ' selected';
+              echo '" href="/?cat=projects&subcat=social">Социальные Технологии</a>
+              <a class="nav-link mx-3';
+              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'initiativ')
+                echo ' selected';
+              echo '" href="/?cat=projects&subcat=initiativ">Инициативные проекты</a>
                   </div>
-                </li>
-              <li class="nav-item mr-4">
-                <a class="nav-link" href="#">Участники</a>
+                </div>
               </li>
-              <li class="nav-item mr-4">
-                <a class="nav-link" href="#">Команды</a>
+              <li class="nav-item mr-4';
+              if($_GET['cat'] === 'users')
+                echo ' active';
+              echo '">
+                <a class="nav-link" href="/?cat=users">Участники</a>
               </li>
+              <li class="nav-item mr-4';
+              if($_GET['cat'] === 'teams')
+                echo ' active';
+              echo '">
+                <a class="nav-link" href="/?cat=teams">Команды</a>
+              </li>';
+            ?>
           </ul>
         </div>
         
@@ -74,7 +115,7 @@
     <div class="card">
 
         <!-- Card image -->
-        <div class="view overlay" style="height: 100%; width: auto; max-height: 400px;">
+        <div class="view overlay">
           <img class="card-img-top" src="img/1.png" alt="Card image cap">
           <a href="#!">
             <div class="mask rgba-white-slight"></div>
@@ -107,7 +148,7 @@
     </div>
     <div class="card">
 
-        <div class="view overlay" style="height: 100%; width: auto; max-height: 400px;">
+        <div class="view overlay">
           <img class="card-img-top" src="img/2.jpg" alt="Card image cap">
           <a href="#!">
             <div class="mask rgba-white-slight"></div>
@@ -134,7 +175,7 @@
     </div>
     <div class="card">
 
-        <div class="view overlay" style="height: 100%; width: auto; max-height: 400px;">
+        <div class="view overlay">
           <img class="card-img-top" src="img/3.jpg" alt="Card image cap">
           <a href="#!">
             <div class="mask rgba-white-slight"></div>
