@@ -79,6 +79,10 @@ main {
     margin: 0;
 }
 
+.pagination .page-item .page-link:hover {
+    background-color: #4285f49c;
+}
+
 /* Footer */
 
 footer {
