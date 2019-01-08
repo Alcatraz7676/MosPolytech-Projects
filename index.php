@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-          <a class="navbar-brand mr-5" href="#">Проекты МосПолитеха</a>
+          <a class="navbar-brand mr-5" href="/?cat=projects&subcat=all">Проекты МосПолитеха</a>
           <ul class="navbar-nav mt-lg-0">
             <?php
               if(!isset($_GET['cat'])) {
@@ -111,114 +111,29 @@
   </header>
 
   <main>
-    <!-- Card -->
-    <div class="card">
+    <?php
+      if (($_GET['cat'] !== 'projects' || ($_GET['subcat'] !== 'all' && $_GET['subcat'] !== 'transport' && $_GET['subcat'] !== 'tech' && $_GET['subcat'] !== 'him' && $_GET['subcat'] !== 'energ' && $_GET['subcat'] !== 'design' && $_GET['subcat'] !== 'social' && $_GET['subcat'] !== 'initiativ')) && $_GET['cat'] !== 'users' && $_GET['cat'] !== 'team') {
+        echo '<h1 class="d-flex justify-content-center">404 PAGE NOT FOUND</h1>
+              <style type="text/css">
+                footer {
+                  position: absolute;
+                  
+                }
+              </style>';
+      } else {
+        if($_GET['cat'] == 'projects') {
+          include 'projects.php';
 
-        <!-- Card image -->
-        <div class="view overlay">
-          <img class="card-img-top" src="img/1.png" alt="Card image cap">
-          <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-      
-        <!-- Card content -->
-        <div class="card-body">
-      
-          <!-- Project name -->
-          <h4 class="card-title"><strong>VR energetics</strong></h4>
-          <div class="row justify-content-between">
-            <!-- Project Head -->
-            <h4 class="card-title col-lg-7 col-md-9"><strong>Руководитель: Савельев Илья Леонидович</strong></h4>
-            <!-- Project's people count -->
-            <h4 class="pr-5 pl-3" style="width: 150px;"><i class="fas fa-users" aria-hidden="true" style="padding-right: 8px;"></i>5/6</h4>
-          </div>
-          <!-- Project description -->
-          <p class="card-text">VR ENERGETICS это проект, направленный на повышение эффективности проектирования зданий, коммуникаций и инфраструктуры города в целом. Основными задачами проекта является разработка оптимальной технологии работы с 3D моделями, внедрение BIM и CIM технологий в процесс проектирования в таких областях как строительство, энергетика, и др. Одной из неотъемлемых частей проекта должна стать разработка VR проекта т.к. данная технология позволяет значительно расширить возможности как проектировщика, так и конечного пользователя разрабатываемого продукта.</p>
-          <hr>
-          <!-- Button -->
-          <div class="d-flex justify-content-center align-items-center">
-            <a href="#!" class="text-primary">
-              <h4 class="waves-effect waves-light"><strong>Записаться</strong></h4>
-            </a>
-          </div>
-      
-        </div>
-      
-    </div>
-    <div class="card">
+          if(!isset($_GET['pg']) || $_GET['pg'] < 0)
+            $_GET['pg'] = 0;
 
-        <div class="view overlay">
-          <img class="card-img-top" src="img/2.jpg" alt="Card image cap">
-          <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-      
-        <div class="card-body">
-      
-          <h4 class="card-title"><strong>Биодизель</strong></h4>
-          <div class="row justify-content-between">
-              <h4 class="card-title col-lg-7 col-md-9"><strong>Руководитель: Апелинский Дмитрий Викторович</strong></h4>
-              <h4 class="pr-5 pl-3" style="width: 150px;"><i class="fas fa-users" aria-hidden="true" style="padding-right: 8px;"></i>4/6</h4>
-          </div>
-          <p class="card-text">ООО НПП "Агродизель" занимается организацией строительства первого отечественного промышленного производства биоэтанола и метиловых (этиловых) эфиров растительного масла. Подготовлен пилотный проект. С целью участия в выставках требуется разработать и изготовить действующую модель установки для получения метиловых (этиловых) эфиров растительного масла. Наличие производства этих возобновляемых, экологически чистых топлив позволит заместить бензин и дизельное топливо. Тем самым уменьшится выброс углекислого газа и вредных веществ с отработавшими газами двигателя, сократится потребление топлива нефтяного происхождения.</p>
-          <hr>
-          <div class="d-flex justify-content-center align-items-center">
-            <a href="#!" class="text-primary">
-              <h4 class="waves-effect waves-light"><strong>Записаться</strong></h4>
-            </a>
-          </div>
-      
-        </div>
-      
-    </div>
-    <div class="card">
+          if(!isset($_GET['subcat']))
+            $_GET['subcat'] = 'all';
 
-        <div class="view overlay">
-          <img class="card-img-top" src="img/3.jpg" alt="Card image cap">
-          <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-      
-        <div class="card-body">
-      
-          <h4 class="card-title"><strong>PUSHKAforum</strong></h4>
-          <div class="row justify-content-between">
-              <h4 class="card-title col-lg-7 col-md-9"><strong>Руководитель: Храповицкий Виктор Алексеевич</strong></h4>
-              <h4 class="pr-5 pl-3" style="width: 150px;"><i class="fas fa-users" aria-hidden="true" style="padding-right: 8px;"></i>3/8</h4>
-          </div>
-          <p class="card-text">Конкурсный проект для Международного форума инноваций в промышленном дизайне PUSHKA. В первую очередь проекты будут интересны для студентов обучающихся по направлениям «Промышленный дизайн» и «Дизайн средств транспорта». Проекты могут выполняться согласно методике «Production design» – проектирование промышленно производимого продукта; и по методике «Advanced design» - проектирование продвинутых, перспективных продуктов, для реализации потребностей пользователя.</p>
-          <hr>
-          <!-- Button -->
-          <div class="d-flex justify-content-center align-items-center">
-            <a href="#!" class="text-primary">
-              <h4 class="waves-effect waves-light"><strong>Записаться</strong></h4>
-            </a>
-          </div>
-      
-        </div>
-      
-      </div>
-
-      <nav class="d-flex justify-content-center">
-        <ul class="pagination pg-blue" style="margin: 0">
-          <li class="page-item active"><a class="page-link">1 <span class="sr-only">(current)</span></a></li>
-          <li class="page-item">
-            <a class="page-link">2</a>
-          </li>
-          <li class="page-item"><a class="page-link">3</a></li>
-          <li class="page-item"><a class="page-link">4</a></li>
-          <li class="page-item"><a class="page-link">5</a></li>
-          <li class="page-item">
-              <a class="page-link" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-        </ul>
-      </nav>
+          echo getProjectsList($_GET['subcat'], $_GET['pg']);
+        }
+      }
+    ?>
   </main>
 
   <footer>
