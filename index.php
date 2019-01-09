@@ -16,7 +16,15 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body style="height: 100vh">
+<body class="d-flex flex-column h-100">
+
+<?php
+    session_start();
+
+    if(isset($_GET['logout'])) {
+        unset($_SESSION['user']);
+    }
+?>
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark elegant-color-dark">
@@ -25,17 +33,24 @@
           aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="dropdown user-dropdown" style="align-self: flex-end;">
-            <button class="btn btn-primary dropdown-toggle btn-blue btn-rounded" type="button" id="dropdownMenu1" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">Максим Овчинников</button>
+        <?php
+            if(isset($_SESSION['user'])) {
+                echo '
+                <div class="dropdown user-dropdown" style="align-self: flex-end;">
+                    <button class="btn btn-primary dropdown-toggle btn-blue btn-rounded" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">'.$_SESSION['user']['name'].' '.$_SESSION['user']['surname'].'</button>
         
-            <div class="dropdown-menu dropdown-primary dropdown-user">
-              <a class="dropdown-item" href="#"><i class="fal fa-user-circle fa-lg" aria-hidden="true" style="padding-right: 8px;"></i>Личный кабинет</a>
-              <a class="dropdown-item" href="#"><i class="far fa-calendar fa-lg" aria-hidden="true" style="padding-right: 8px;"></i>График</a>
-              <a class="dropdown-item" href="#"><i class="fas fa-file-alt fa-lg" aria-hidden="true" style="padding-right: 8px;"></i>Мои проекты</a>
-              <a class="dropdown-item" href="#"><i class="fas fa-power-off fa-lg" aria-hidden="true" style="padding-right: 8px;"></i>Выйти</a>
-            </div>
-        </div>
+                    <div class="dropdown-menu dropdown-primary dropdown-user">
+                        <a class="dropdown-item" href="#"><i class="fal fa-user-circle fa-lg" aria-hidden="true" style="padding-right: 8px;"></i>Личный кабинет</a>
+                        <a class="dropdown-item" href="#"><i class="far fa-calendar fa-lg" aria-hidden="true" style="padding-right: 8px;"></i>График</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-file-alt fa-lg" aria-hidden="true" style="padding-right: 8px;"></i>Мои проекты</a>
+                        <a class="dropdown-item" href="?logout"><i class="fas fa-power-off fa-lg" aria-hidden="true" style="padding-right: 8px;"></i>Выйти</a>
+                    </div>
+                </div>';
+            } else {
+                echo '<a class="btn btn-primary btn-blue btn-rounded btn-login" href="login-page.php" style="align-self: flex-end;" type="button">Войти</a>';
+            }
+        ?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
           <a class="navbar-brand mr-5" href="/?cat=projects&subcat=all">Проекты МосПолитеха</a>
           <ul class="navbar-nav mt-lg-0">
@@ -110,9 +125,10 @@
     </nav>
   </header>
 
-  <main>
+  <main class="flex-fill">
     <?php
-      if (($_GET['cat'] !== 'projects' || ($_GET['subcat'] !== 'all' && $_GET['subcat'] !== 'transport' && $_GET['subcat'] !== 'tech' && $_GET['subcat'] !== 'him' && $_GET['subcat'] !== 'energ' && $_GET['subcat'] !== 'design' && $_GET['subcat'] !== 'social' && $_GET['subcat'] !== 'initiativ')) && $_GET['cat'] !== 'users' && $_GET['cat'] !== 'team') {
+
+      if (($_GET['cat'] !== 'projects' || ($_GET['subcat'] !== 'all' && $_GET['subcat'] !== 'transport' && $_GET['subcat'] !== 'tech' && $_GET['subcat'] !== 'him' && $_GET['subcat'] !== 'energ' && $_GET['subcat'] !== 'design' && $_GET['subcat'] !== 'social' && $_GET['subcat'] !== 'initiativ')) && $_GET['cat'] !== 'users' && $_GET['cat'] !== 'teams') {
         echo '<h1 class="d-flex justify-content-center">404 PAGE NOT FOUND</h1>
               <style type="text/css">
                 footer {
@@ -136,7 +152,7 @@
     ?>
   </main>
 
-  <footer>
+  <footer class="py-3">
     © 2019 Московский политехнический университет
   </footer>
 

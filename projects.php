@@ -8,7 +8,7 @@
         $db_name = "std_226";
 
         $mysqli = mysqli_connect($db_host, $db_user, $db_password, $db_name);
-        if ( mysqli_connect_errno() )
+        if (mysqli_connect_errno())
             return showMessage('Ошибка подключения к БД: '.mysqli_connect_error());
         
         if ($type !== 'all')
@@ -20,14 +20,6 @@
 
             if (!$TOTAL = $row[0])
                 return showMessage('Для этого направления пока нет проектов');
-
-            if($row[0] == 1)
-                echo '
-                <style type="text/css">
-                    footer {
-                        position: absolute;  
-                    }
-                </style>';
 
             // Количество карточек на одной странице
             $items = 3;
@@ -89,11 +81,6 @@
     }
 
     function showMessage($text) {
-        return '<h1 class="d-flex justify-content-center">'.$text.'</h1>
-        <style type="text/css">
-            footer {
-                position: absolute;  
-            }
-        </style>';
+        return '<h1 class="d-flex justify-content-center">'.$text.'</h1>';
     }
 ?>

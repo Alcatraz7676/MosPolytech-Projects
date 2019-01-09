@@ -16,6 +16,7 @@
 body {
     background-color: #edebf2;
     font-family: 'Gilroy';
+    min-height: 100vh;
 }
 
 /* Header */
@@ -41,10 +42,17 @@ body {
     border-bottom: 3px solid white;
 }
 
-.user-dropdown {
+.user-dropdown, .btn-login {
     order: 10;
     word-wrap: normal;
+}
+
+.user-dropdown {
     width: 250px;
+}
+
+.btn-login {
+    width: 200px;
 }
 
 .dropdown-item {
@@ -92,11 +100,6 @@ main {
 /* Footer */
 
 footer {
-    position: relative;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
     background-color: #303030;
     text-align: center;
     color: white;
