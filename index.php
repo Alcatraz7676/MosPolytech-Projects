@@ -13,7 +13,7 @@
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Custom styles -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -55,68 +55,69 @@
           <a class="navbar-brand mr-5" href="/?cat=projects&subcat=all">Проекты МосПолитеха</a>
           <ul class="navbar-nav mt-lg-0">
             <?php
-              if(!isset($_GET['cat'])) {
-                $_GET['cat'] = 'projects';
-              }
-              if($_GET['cat'] === 'projects' && !isset($_GET['subcat'])) {
-                $_GET['subcat'] = 'all';
-              }
-              echo '<li class="nav-item dropdown mr-4 mega-dropdown';
-              if($_GET['cat'] === 'projects')
-                echo ' active';
-              echo '">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">Проекты
-              </a>
-              <div class="dropdown-menu mega-menu v-2 z-depth-1 elegant-color px-3" aria-labelledby="navbarDropdownMenuLink2">
-                    <div class="row">
-                      <a class="nav-link mx-3';
-              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'all')
-                echo ' selected';
-              echo '" href="/?cat=projects&subcat=all">Все</a>
-              <a class="nav-link mx-3';
-              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'transport')
-                echo ' selected';
-              echo '" href="/?cat=projects&subcat=transport">Транспорт</a>
-              <a class="nav-link mx-3';
-              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'tech')
-                echo ' selected';
-              echo '" href="/?cat=projects&subcat=tech">Технология</a>
-              <a class="nav-link mx-3';
-              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'him')
-                echo ' selected';
-              echo '" href="/?cat=projects&subcat=him">Химбиотех</a>
-              <a class="nav-link mx-3';
-              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'energ')
-                echo ' selected';
-              echo '" href="/?cat=projects&subcat=energ">Энергетика</a>
-              <a class="nav-link mx-3';
-              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'design')
-                echo ' selected';
-              echo '" href="/?cat=projects&subcat=design">Дизайн</a>
-              <a class="nav-link mx-3';
-              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'social')
-                echo ' selected';
-              echo '" href="/?cat=projects&subcat=social">Социальные Технологии</a>
-              <a class="nav-link mx-3';
-              if($_GET['cat'] === 'projects' && $_GET['subcat'] === 'initiativ')
-                echo ' selected';
-              echo '" href="/?cat=projects&subcat=initiativ">Инициативные проекты</a>
-                  </div>
-                </div>
-              </li>
-              <li class="nav-item mr-4';
-              if($_GET['cat'] === 'users')
-                echo ' active';
-              echo '">
-                <a class="nav-link" href="/?cat=users">Участники</a>
-              </li>
-              <li class="nav-item mr-4';
-              if($_GET['cat'] === 'teams')
-                echo ' active';
-              echo '">
-                <a class="nav-link" href="/?cat=teams">Команды</a>
-              </li>';
+
+                if(!isset($_GET['cat']) || !isset($_GET['project'])) {
+                    $_GET['cat'] = 'projects';
+                }
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects' && !isset($_GET['subcat'])) {
+                    $_GET['subcat'] = 'all';
+                }
+                echo '<li class="nav-item dropdown mr-4 mega-dropdown';
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects')
+                    echo ' active';
+                echo '">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Проекты
+                </a>
+                <div class="dropdown-menu mega-menu v-2 z-depth-1 elegant-color px-3" aria-labelledby="navbarDropdownMenuLink2">
+                        <div class="row">
+                        <a class="nav-link mx-3';
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects' && $_GET['subcat'] === 'all')
+                    echo ' selected';
+                echo '" href="/?cat=projects&subcat=all">Все</a>
+                <a class="nav-link mx-3';
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects' && $_GET['subcat'] === 'transport')
+                    echo ' selected';
+                echo '" href="/?cat=projects&subcat=transport">Транспорт</a>
+                <a class="nav-link mx-3';
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects' && $_GET['subcat'] === 'tech')
+                    echo ' selected';
+                echo '" href="/?cat=projects&subcat=tech">Технология</a>
+                <a class="nav-link mx-3';
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects' && $_GET['subcat'] === 'him')
+                    echo ' selected';
+                echo '" href="/?cat=projects&subcat=him">Химбиотех</a>
+                <a class="nav-link mx-3';
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects' && $_GET['subcat'] === 'energ')
+                    echo ' selected';
+                echo '" href="/?cat=projects&subcat=energ">Энергетика</a>
+                <a class="nav-link mx-3';
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects' && $_GET['subcat'] === 'design')
+                    echo ' selected';
+                echo '" href="/?cat=projects&subcat=design">Дизайн</a>
+                <a class="nav-link mx-3';
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects' && $_GET['subcat'] === 'social')
+                    echo ' selected';
+                echo '" href="/?cat=projects&subcat=social">Социальные Технологии</a>
+                <a class="nav-link mx-3';
+                if(isset($_GET['cat']) && $_GET['cat'] === 'projects' && $_GET['subcat'] === 'initiativ')
+                    echo ' selected';
+                echo '" href="/?cat=projects&subcat=initiativ">Инициативные проекты</a>
+                    </div>
+                    </div>
+                </li>
+                <li class="nav-item mr-4';
+                if($_GET['cat'] === 'users')
+                    echo ' active';
+                echo '">
+                    <a class="nav-link" href="/?cat=users">Участники</a>
+                </li>
+                <li class="nav-item mr-4';
+                if($_GET['cat'] === 'teams')
+                    echo ' active';
+                echo '">
+                    <a class="nav-link" href="/?cat=teams">Команды</a>
+                </li>';
             ?>
           </ul>
         </div>
@@ -126,30 +127,31 @@
   </header>
 
   <main class="flex-fill">
-    <?php
+        <div class="container">
+        <?php
+            if (($_GET['cat'] !== 'projects' || ($_GET['subcat'] !== 'all' && $_GET['subcat'] !== 'transport' && $_GET['subcat'] !== 'tech' && $_GET['subcat'] !== 'him' && $_GET['subcat'] !== 'energ' && $_GET['subcat'] !== 'design' && $_GET['subcat'] !== 'social' && $_GET['subcat'] !== 'initiativ')) && $_GET['cat'] !== 'users' && $_GET['cat'] !== 'teams') {
+                echo '<h1 class="d-flex justify-content-center">404 PAGE NOT FOUND</h1>
+                    <style type="text/css">
+                        footer {
+                        position: absolute;
+                        
+                        }
+                    </style>';
+            } else {
+                if($_GET['cat'] == 'projects') {
+                include 'projects.php';
 
-      if (($_GET['cat'] !== 'projects' || ($_GET['subcat'] !== 'all' && $_GET['subcat'] !== 'transport' && $_GET['subcat'] !== 'tech' && $_GET['subcat'] !== 'him' && $_GET['subcat'] !== 'energ' && $_GET['subcat'] !== 'design' && $_GET['subcat'] !== 'social' && $_GET['subcat'] !== 'initiativ')) && $_GET['cat'] !== 'users' && $_GET['cat'] !== 'teams') {
-        echo '<h1 class="d-flex justify-content-center">404 PAGE NOT FOUND</h1>
-              <style type="text/css">
-                footer {
-                  position: absolute;
-                  
+                if(!isset($_GET['pg']) || $_GET['pg'] < 0)
+                    $_GET['pg'] = 0;
+
+                if(!isset($_GET['subcat']))
+                    $_GET['subcat'] = 'all';
+
+                echo getProjectsList($_GET['subcat'], $_GET['pg']);
                 }
-              </style>';
-      } else {
-        if($_GET['cat'] == 'projects') {
-          include 'projects.php';
-
-          if(!isset($_GET['pg']) || $_GET['pg'] < 0)
-            $_GET['pg'] = 0;
-
-          if(!isset($_GET['subcat']))
-            $_GET['subcat'] = 'all';
-
-          echo getProjectsList($_GET['subcat'], $_GET['pg']);
-        }
-      }
-    ?>
+            }
+        ?>
+        </div>
   </main>
 
   <footer class="py-3">

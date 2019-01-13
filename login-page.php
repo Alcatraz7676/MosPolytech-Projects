@@ -120,7 +120,7 @@
                                                 else if(array_key_exists('login', $_COOKIE))
                                                     echo ' value="'.$_COOKIE['login'].'"';
                                                     
-                                                echo '>
+                                                echo ' required>
                                                     <label for="orangeForm-name">Логин</label>
                                                 </div>
                                             
@@ -131,17 +131,17 @@
                                                 if(array_key_exists('password', $_COOKIE))
                                                     echo ' value="'.$_COOKIE['password'].'"';
 
-                                                echo '>
+                                                echo ' required>
                                                     <label for="orangeForm-pass">Пароль</label>
                                                 </div>';
                                             }
 
                                             function showMessage($text) {
-                                                return '<h3 class="d-flex justify-content-center">'.$text.'</h3>';
+                                                return '<h3 class="d-flex justify-content-center" style="color: white;">'.$text.'</h3>';
                                             }
                                         ?>
                                         <div class="text-center">
-                                            <button class="btn purple-gradient btn-lg">Войти</button>
+                                            <input type="submit" class="btn purple-gradient btn-lg" value="Войти">
                                         </div>
 
                                         </form>

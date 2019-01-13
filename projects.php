@@ -36,10 +36,13 @@
 
             $res = '';
             while($row = mysqli_fetch_assoc($sql_res)) {
+
+                $approved_num = mysqli_fetch_row(mysqli_query($mysqli, 'SELECT COUNT(*) FROM approved WHERE project_id='.$row['id']));
+
                 $res.='<div class="card">
                 <div class="view overlay">
                 <img class="card-img-top" src="img/'.$row['image'].'" alt="Card image cap">
-                <a href="#!">
+                <a href="project.php?project='.$row['id'].'">
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
@@ -48,15 +51,18 @@
               <h4 class="card-title"><strong>'.$row['title'].'</strong></h4>
               <div class="row justify-content-between">
                 <h4 class="card-title col-lg-7 col-md-9"><strong>Руководитель: '.$row['head'].'</strong></h4>
-                <h4 class="pr-5 pl-3" style="width: 150px;"><i class="fas fa-users" aria-hidden="true" style="padding-right: 8px;"></i>'.$row['people'].'/'.$row['capacity'].'</h4>
+                <h4 class="pr-5 pl-3" style="width: 150px;"><i class="fas fa-users" aria-hidden="true" style="padding-right: 8px;"></i>'.$approved_num[0].'/'.$row['capacity'].'</h4>
                 </div>
                 <p class="card-text">'.$row['description'].'</p>
                 <hr>
                 <!-- Button -->
                 <div class="d-flex justify-content-center align-items-center">
-                    <a href="#!" class="text-primary">
-                        <h4 class="waves-effect waves-light"><strong>Записаться</strong></h4>
-                    </a>
+                    <a href="project.php?project='.$row['id'].'" class="text-primary">';
+                if(isset($_SESSION['user']) && $_SESSION['user']['type'] == 'student' )
+                    $res.='<h4 class="waves-effect waves-light"><strong>Записаться</strong></h4>';
+                else
+                    $res.='<h4 class="waves-effect waves-light"><strong>Просмотреть</strong></h4>';
+                $res.='</a>
                 </div>
               </div>
             </div>';
